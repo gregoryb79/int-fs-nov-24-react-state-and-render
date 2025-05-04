@@ -1,0 +1,23 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: calc(1rem + 0.5vw);
+}
+
+body {
+    font-family: system-ui;
+    line-height: 1.5;
+}
+
+#root {
+    width: min(70ch, 100% - 2rem);
+    margin-inline: auto;
+}
+
+button {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+}
