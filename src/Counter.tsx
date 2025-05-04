@@ -7,15 +7,18 @@ export function Counter() {
 
     return (
         <article className={styles.container}>
+            <button>➗2</button>
             <button onClick={() => {
                 setCount(count - 1);
                 console.log(count);
-            }}>-</button>
+            }}>➖1</button>
             <span>{count}</span>
             <button onClick={() => {
                 setCount(count + 1);
                 console.log(count);
-            }}>+</button>
+            }}>➕1</button>
+            <button>✖️2</button>
+            <button>Reset</button>
         </article>
     );
 }
