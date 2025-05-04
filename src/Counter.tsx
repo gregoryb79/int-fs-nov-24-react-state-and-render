@@ -8,25 +8,30 @@ export function Counter() {
     return (
         <article className={styles.container}>
             <button onClick={() => {
-                setCount(count/2);
-                console.log(count);
+                const currCount = count/2;
+                setCount(currCount);
+                console.log(currCount);
             }}>➗2</button>
             <button onClick={() => {
-                setCount(count - 1);
-                console.log(count);
+                const currCount = count-1;
+                setCount(currCount);
+                console.log(currCount);
             }}>➖1</button>
             <span>{count}</span>
             <button onClick={() => {
-                setCount(count + 1);
-                console.log(count);
+                const currCount = count+1;
+                setCount(currCount);
+                console.log(currCount);
             }}>➕1</button>
             <button onClick={() => {
-                setCount(count*2);
-                console.log(count);
+                const currCount = count*2;
+                setCount(currCount);
+                console.log(currCount);
             }}>✖️2</button>
             <button onClick={() => {
-                setCount(0);
-                console.log(count);
+                const currCount = 0;
+                setCount(currCount);
+                console.log(currCount);
             }}>Reset</button>
         </article>
     );
