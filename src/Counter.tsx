@@ -1,9 +1,13 @@
-import { useState } from "react";
+
 import styles from "./Counter.module.scss";
 
-export function Counter() {
-    console.log("Render Counter");
-    const [count, setCount] = useState(0);
+type CounterProps = {
+    count: number;
+    setCount: React.Dispatch<React.SetStateAction<number>>;
+  }
+
+export function Counter({ count, setCount }: CounterProps) {
+    
 
     return (
         <article className={styles.container}>
