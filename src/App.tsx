@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
+import { AsyncCounter } from "./AsyncCounter";
 
 // 1. add "SPA navigation" - menu with button to show the synced counters and another button to show the counter list
 // 2. implement "static" counter list - show 4 counters with individual states
@@ -10,13 +11,20 @@ import { Counter } from "./Counter";
 // Bonus - maintain the state of the counters when "navigating" back and forth  between the components
 
 function App() {
+  const [selectedView, setSelectedView] = useState<"synced" | "asynced">("synced");
+
   return (
     <>
+      <nav>
+        <button onClick={() => setSelectedView("synced")}>Synced Counters</button>
+        <button onClick={() => setSelectedView("asynced")}>Counter List</button>
+      </nav>
       <SyncedCounters />
       <CounterList />
     </>
   );
 }
+
 
 function SyncedCounters() {
   const [count, setCount] = useState(0);
@@ -43,6 +51,7 @@ function SyncedCounters() {
 
   return (
     <>
+      <h2>Sync Counters</h2>
       <Counter count={count} onHalfClick={half} onDecreaseClick={decrease} onIncreaseClick={increase} onDoubleClick={double} onResetClick={reset} />
       <Counter count={count} onHalfClick={half} onDecreaseClick={decrease} onIncreaseClick={increase} onDoubleClick={double} onResetClick={reset} />
       <Counter count={count} onHalfClick={half} onDecreaseClick={decrease} onIncreaseClick={increase} onDoubleClick={double} onResetClick={reset} />
@@ -53,7 +62,10 @@ function SyncedCounters() {
 
 function CounterList() {
   return (
-    <div>Counter list</div>
+    <>
+      <h2>Async Counter</h2>
+      <AsyncCounter />
+    </>
   );
 }
 
