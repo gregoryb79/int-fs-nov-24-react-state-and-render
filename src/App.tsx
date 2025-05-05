@@ -12,11 +12,14 @@ import { Counter } from "./Counter";
 
 function App() {
   const [currentTab, setCurrentTab] = useState<"synced" | "list">("synced");
+  const [count, setCount] = useState(0);
+  const [counters, setCounters] = useState<number[]>([]);
+
 
   return (
     <>
       <Nav onSyncedClick={() => setCurrentTab("synced")} onListClick={() => setCurrentTab("list")} />
-      {currentTab === "synced" ? <SyncedCounters /> : <CounterList />}
+      {currentTab === "synced" ? <SyncedCounters count={count} setCount={setCount} /> : <CounterList counters={counters} setCounters={setCounters}/>}
     </>
   );
 }
@@ -33,9 +36,11 @@ function Nav({ onSyncedClick, onListClick }: NavProps) {
     </nav>
   );
 }
-
-function SyncedCounters() {
-  const [count, setCount] = useState(0);
+type SyncedCountersProps = {
+  count: number;  
+  setCount: (count: number) => void;
+}
+function SyncedCounters({count, setCount}: SyncedCountersProps) {  
 
   function half() {
     setCount(count / 2);
@@ -66,9 +71,12 @@ function SyncedCounters() {
     </>
   );
 }
-
-function CounterList() {
-  const [counters, setCounters] = useState<number[]>([]);
+type CounterListProps = {
+  counters: number[];
+  setCounters: (counters: number[]) => void;
+}
+function CounterList({counters, setCounters}: CounterListProps) {
+  
 
   function newCounter() {
     setCounters([...counters, 0]);
