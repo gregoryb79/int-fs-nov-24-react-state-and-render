@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Counter } from "./Counter";
+import styles from "./App.module.scss";
 
 // 1. add "SPA navigation" - menu with button to show the synced counters and another button to show the counter list
 // 2. implement "static" counter list - show 4 counters with individual states
@@ -30,7 +31,7 @@ type NavProps = {
 };
 function Nav({ onSyncedClick, onListClick }: NavProps) {
   return (
-    <nav>
+    <nav className={styles.nav}>
       <button onClick={onSyncedClick}>Synced</button>
       <button onClick={onListClick}>List</button>
     </nav>
@@ -135,10 +136,10 @@ function CounterList({counters, setCounters}: CounterListProps) {
   
   return (
     <>
-      <button onClick={newCounter}>New counter</button>
+      <button className={styles.newCounterButton} onClick={newCounter}>New counter</button>
       <ul>
         {counters.map((count, index) => 
-          <li key={index}>            
+          <li className={styles.li} key={index}>            
             <Counter count={count} onHalfClick={() => half(index)} onDecreaseClick={() => decrease(index)} onIncreaseClick={() => increase(index)} onDoubleClick={() => double(index)} onResetClick={() => reset(index)} />          
             <button onClick={() => deleteCounter(index)}>Delete</button>
             <button onClick={() => moveUp(index)}>⬆</button>
