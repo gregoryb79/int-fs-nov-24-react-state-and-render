@@ -1,42 +1,22 @@
-
 import styles from "./Counter.module.scss";
 
 type CounterProps = {
     count: number;
-    setCount: React.Dispatch<React.SetStateAction<number>>;
-  }
-
-export function Counter({ count, setCount }: CounterProps) {
-    
-
+    onHalfClick: () => void;
+    onDecreaseClick: () => void;
+    onIncreaseClick: () => void;
+    onDoubleClick: () => void;
+    onResetClick: () => void;
+};
+export function Counter({ count, onHalfClick, onDecreaseClick, onIncreaseClick, onDoubleClick, onResetClick }: CounterProps) {
     return (
         <article className={styles.container}>
-            <button onClick={() => {
-                const currCount = count/2;
-                setCount(currCount);
-                console.log(currCount);
-            }}>➗2</button>
-            <button onClick={() => {
-                const currCount = count-1;
-                setCount(currCount);
-                console.log(currCount);
-            }}>➖1</button>
+            <button onClick={onHalfClick}>➗2</button>
+            <button onClick={onDecreaseClick}>➖1</button>
             <span>{count}</span>
-            <button onClick={() => {
-                const currCount = count+1;
-                setCount(currCount);
-                console.log(currCount);
-            }}>➕1</button>
-            <button onClick={() => {
-                const currCount = count*2;
-                setCount(currCount);
-                console.log(currCount);
-            }}>✖️2</button>
-            <button onClick={() => {
-                const currCount = 0;
-                setCount(currCount);
-                console.log(currCount);
-            }}>Reset</button>
+            <button onClick={onIncreaseClick}>➕1</button>
+            <button onClick={onDoubleClick}>✖️2</button>
+            <button onClick={onResetClick}>Reset</button>
         </article>
     );
 }
